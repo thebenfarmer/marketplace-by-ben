@@ -84,6 +84,10 @@ for plugin in codex_daten.get("plugins", []):
         meta = json.loads(manifest.read_text())
         if meta.get("name") != plugin["name"]:
             melde(f"{manifest}: name '{meta.get('name')}' != Katalog-Name '{plugin['name']}'")
+        claude_manifest = plugin_dir / ".claude-plugin" / "plugin.json"
+        claude_meta = json.loads(claude_manifest.read_text())
+        if meta.get("version") != claude_meta.get("version"):
+            melde(f"{plugin['name']}: Codex-Version '{meta.get('version')}' != Claude-Version '{claude_meta.get('version')}'")
     except (OSError, json.JSONDecodeError) as e:
         melde(f"{manifest}: {e}")
 if claude_namen != codex_namen:
