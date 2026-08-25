@@ -13,7 +13,7 @@
     {
       "name": "pen",
       "source": "./plugins/pen",
-      "description": "Designs mit der pen.dev-CLI erzeugen und bearbeiten - bietet sich nur an, wo die CLI installiert ist"
+      "description": "Designs mit der pen.dev-CLI erzeugen und bearbeiten - bietet sich nur an, wo die Pen-App installiert ist, und installiert die CLI bei Bedarf nach"
     }
   ]
 }

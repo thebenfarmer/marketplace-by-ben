@@ -1,6 +1,6 @@
 ---
 name: pen
-description: Erzeugt und bearbeitet Designs (.pen-Dateien) mit der pen.dev-CLI - UI-Mockups, Landing Pages, Grafiken per Prompt. Nutze bei "design mir", "Mockup erstellen", "pen", "pencil", "pen-Datei" - aber NUR, wenn die CLI installiert ist (pen status prueft das); ist sie es nicht, Design-Arbeit nicht ueber pen.dev anbieten.
+description: Erzeugt und bearbeitet Designs (.pen-Dateien) mit der pen.dev-CLI - UI-Mockups, Landing Pages, Grafiken per Prompt. Nutze bei "design mir", "Mockup erstellen", "pen", "pencil", "pen-Datei" - aber NUR, wenn die Pen-Desktop-App oder die CLI installiert ist; fehlt beides, Design-Arbeit nicht ueber pen.dev anbieten. Ist die App da und die CLI nicht, wird die CLI automatisch nachinstalliert.
 ---
 
 # Pen.dev: Designs per CLI
@@ -15,22 +15,31 @@ und bearbeiten: UI-Mockups, Landing Pages, Grafiken. Das Ergebnis ist eine
 **Stand der Befehle: August 2026.** Schlägt ein Befehl fehl: erst `pen --help`
 lesen, dann die Doku auf <https://pen.dev> — nicht raten.
 
-## Schritt 1: Lage prüfen — und nur weitermachen, wenn Pen da ist
+## Schritt 1: Lage prüfen — die Pen-App entscheidet
 
-`pen status` ausführen.
+Maßstab ist die **Pen-Desktop-App**: Wer sie installiert hat, ist Pen-Nutzer — für
+den darf die CLI fehlen und wird nachinstalliert. Wer sie nicht hat, arbeitet ohne
+Pen, und der Skill hält still.
 
-- **Eingeloggt:** bereit, weiter zu Schritt 2.
-- **CLI installiert, aber nicht eingeloggt:** `pen login` ist interaktiv (E-Mail +
-  Passwort oder Einmal-Code) — das macht der Mensch selbst, mit seinem eigenen
-  pen.dev-Account. Im Terminal von Claude Code: vorschlagen, `! pen login` in die
-  Prompt zu tippen.
-- **CLI fehlt** (`command not found`): **Hier endet der Skill.** Pen.dev nicht
-  anbieten, keine Installation vorschlagen, nicht nachfragen — wer die CLI nicht
-  hat, arbeitet ohne sie. Nur wenn der Mensch von sich aus nach der Einrichtung
-  fragt: `npm install -g @pen.dev/cli` (braucht Node.js), danach `pen login`.
+Der Reihe nach:
+
+1. `pen status` ausführen. **Eingeloggt:** bereit, weiter zu Schritt 2.
+   **Nicht eingeloggt:** `pen login` ist interaktiv (E-Mail + Passwort oder
+   Einmal-Code) — das macht der Mensch selbst, mit seinem eigenen pen.dev-Account.
+   Im Terminal von Claude Code: vorschlagen, `! pen login` in die Prompt zu tippen.
+2. **CLI fehlt** (`command not found`): nachsehen, ob die Pen-Desktop-App
+   installiert ist — auf dem Mac `/Applications/Pen.app`, sonst der übliche
+   Programme-Ort des Systems.
+   - **App vorhanden:** die CLI automatisch nachinstallieren:
+     `npm install -g @pen.dev/cli` (braucht Node.js; fehlt Node, das ansagen statt
+     es ungefragt mitzuinstallieren). Danach zurück zu 1.
+   - **App fehlt: Hier endet der Skill.** Pen.dev nicht anbieten, keine
+     Installation vorschlagen, nicht nachfragen. Nur wenn der Mensch von sich aus
+     nach der Einrichtung fragt, den Weg nennen: App von <https://pen.dev>, dann
+     CLI, dann Login.
 
 Dasselbe gilt fürs proaktive Anbieten: "Soll ich dir das als Design entwerfen?"
-ist nur dann eine erlaubte Frage, wenn `pen` installiert ist.
+ist nur dann eine erlaubte Frage, wenn die Pen-App (oder die CLI) da ist.
 
 ## Schritt 2: designen
 
@@ -68,7 +77,8 @@ das Design aussieht — du hast es nicht gesehen, du hast es beauftragt.
 
 | Fehler | Warum er weh tut |
 |---|---|
-| Pen anbieten, obwohl die CLI fehlt | Der Mensch landet in einer Installations-Odyssee, die er nie wollte. Erst `pen status`, dann reden. |
+| Pen anbieten, obwohl die Pen-App fehlt | Der Mensch landet in einer Installations-Odyssee, die er nie wollte. Erst prüfen, dann reden. |
+| Bei fehlender CLI aufgeben, obwohl die App da ist | Wer die App hat, ist Pen-Nutzer — die CLI still nachinstallieren gehört zum Skill. |
 | `pen login` selbst ausführen wollen | Der Login ist interaktiv und gehört dem Menschen. Automatisierte Eingaben scheitern oder landen im falschen Account. |
 | `.pen`-Datei mit Read/Grep öffnen | Kein Klartext — das Ergebnis ist Zeichensalat und verbrennt nur Kontext. |
 | Die Ausgangsdatei überschreiben | Ein missglückter Prompt vernichtet dann den letzten guten Stand. |

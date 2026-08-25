@@ -1,7 +1,7 @@
 {
   "name": "pen",
   "displayName": "Pen.dev",
-  "description": "Designs mit der pen.dev-CLI erzeugen und bearbeiten - .pen-Dateien per Prompt, direkt aus dem Gespraech. Bietet sich nur an, wo die CLI installiert ist",
+  "description": "Designs mit der pen.dev-CLI erzeugen und bearbeiten - .pen-Dateien per Prompt, direkt aus dem Gespraech. Bietet sich nur an, wo die Pen-App installiert ist, und installiert die CLI bei Bedarf nach",
   "version": "1.0.0",
   "author": {
     "name": "Ben Dressler"
