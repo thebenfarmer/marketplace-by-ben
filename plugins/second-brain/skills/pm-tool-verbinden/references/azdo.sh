@@ -77,7 +77,7 @@ case "$command" in
   iteration-workitems)
     project=${2:-}
     iteration_id=${3:-}
-    [ -n "$project" ] && [ -n "$iteration_id" ] || { usage; exit 1; }
+    if [ -z "$project" ] || [ -z "$iteration_id" ]; then usage; exit 1; fi
     request "/$(url_path "$project")/_apis/work/teamsettings/iterations/$iteration_id/workitems?api-version=$api_version"
     ;;
   workitems)
@@ -92,7 +92,7 @@ case "$command" in
   workitem-details)
     project=${2:-}
     ids=${3:-}
-    [ -n "$project" ] && [ -n "$ids" ] || { usage; exit 1; }
+    if [ -z "$project" ] || [ -z "$ids" ]; then usage; exit 1; fi
     request "/$(url_path "$project")/_apis/wit/workitemsbatch?api-version=$api_version" \
       -X POST \
       -H "Content-Type: application/json" \
@@ -101,7 +101,7 @@ case "$command" in
   workitem-comments)
     project=${2:-}
     item_id=${3:-}
-    [ -n "$project" ] && [ -n "$item_id" ] || { usage; exit 1; }
+    if [ -z "$project" ] || [ -z "$item_id" ]; then usage; exit 1; fi
     request "/$(url_path "$project")/_apis/wit/workItems/$item_id/comments?api-version=6.0-preview.3"
     ;;
   repos)
@@ -113,7 +113,7 @@ case "$command" in
     project=${2:-}
     repository=${3:-}
     item_path=${4:-/}
-    [ -n "$project" ] && [ -n "$repository" ] || { usage; exit 1; }
+    if [ -z "$project" ] || [ -z "$repository" ]; then usage; exit 1; fi
     encoded_path=$(url_path "$item_path")
     request "/$(url_path "$project")/_apis/git/repositories/$(url_path "$repository")/items?scopePath=$encoded_path&recursionLevel=OneLevel&includeContentMetadata=true&api-version=$api_version"
     ;;
@@ -121,7 +121,7 @@ case "$command" in
     project=${2:-}
     repository=${3:-}
     item_path=${4:-}
-    [ -n "$project" ] && [ -n "$repository" ] && [ -n "$item_path" ] || { usage; exit 1; }
+    if [ -z "$project" ] || [ -z "$repository" ] || [ -z "$item_path" ]; then usage; exit 1; fi
     encoded_path=$(url_path "$item_path")
     request "/$(url_path "$project")/_apis/git/repositories/$(url_path "$repository")/items?path=$encoded_path&includeContent=true&resolveLfs=true&api-version=$api_version"
     ;;
