@@ -1,0 +1,11 @@
+{
+  "name": "pen",
+  "displayName": "Pen.dev",
+  "description": "Designs mit der pen.dev-CLI erzeugen und bearbeiten - .pen-Dateien per Prompt, direkt aus dem Gespraech. Bietet sich nur an, wo die CLI installiert ist",
+  "version": "1.0.0",
+  "author": {
+    "name": "Ben Dressler"
+  },
+  "repository": "https://github.com/thebenfarmer/marketplace-by-ben",
+  "keywords": ["pen", "pencil", "design", "ui"]
+}

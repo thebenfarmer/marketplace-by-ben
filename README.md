@@ -9,6 +9,7 @@ GitHub-Konto funktionieren.
 | Plugin | Skills | Wofür |
 |---|---|---|
 | `second-brain` | `onboarding`, `feierabend`, `fragmichaus`, `pm-tool-verbinden` | Skills für einen PARA-Vault aus der [Second-Brain-Vorlage](https://github.com/thebenfarmer/second-brain-vorlage) |
+| `pen` | `pen` | Designs mit der [pen.dev](https://pen.dev)-CLI erzeugen und bearbeiten — bietet sich nur an, wo die CLI installiert ist |
 
 Die Skills im Überblick:
 
@@ -19,6 +20,9 @@ Die Skills im Überblick:
   Frage, bis das Denken stressgetestet ist
 - **`pm-tool-verbinden`** — verbindet den Assistenten mit Azure DevOps, Jira oder
   Notion, damit er dort Tickets und Seiten bearbeiten kann
+- **`pen`** — erzeugt und ändert `.pen`-Design-Dateien per Prompt über die
+  pen.dev-CLI (eigener pen.dev-Account nötig; ohne installierte CLI hält der Skill
+  still)
 
 ## Installieren
 

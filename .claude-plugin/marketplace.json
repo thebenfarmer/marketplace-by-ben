@@ -9,6 +9,11 @@
       "name": "second-brain",
       "source": "./plugins/second-brain",
       "description": "Skills fuer einen PARA-Vault aus der Second-Brain-Vorlage: Onboarding, Feierabend, Frag-mich-aus, PM-Tool-Anbindung"
+    },
+    {
+      "name": "pen",
+      "source": "./plugins/pen",
+      "description": "Designs mit der pen.dev-CLI erzeugen und bearbeiten - bietet sich nur an, wo die CLI installiert ist"
     }
   ]
 }
