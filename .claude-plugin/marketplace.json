@@ -1,0 +1,14 @@
+{
+  "name": "marketplace-by-ben",
+  "description": "Bens Plugin-Marktplatz. Aktuell: das Second-Brain-Plugin (Onboarding, Feierabend, Frag-mich-aus, PM-Tool-Anbindung) fuer einen PARA-Vault.",
+  "owner": {
+    "name": "Ben Dressler"
+  },
+  "plugins": [
+    {
+      "name": "second-brain",
+      "source": "./plugins/second-brain",
+      "description": "Skills fuer einen PARA-Vault aus der Second-Brain-Vorlage: Onboarding, Feierabend, Frag-mich-aus, PM-Tool-Anbindung"
+    }
+  ]
+}
