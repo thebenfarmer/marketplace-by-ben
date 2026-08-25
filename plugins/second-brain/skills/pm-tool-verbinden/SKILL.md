@@ -1,6 +1,6 @@
 ---
 name: pm-tool-verbinden
-description: Verbindet den Assistenten mit dem Projektwerkzeug - Azure DevOps, Jira oder Notion - damit er dort Tickets, Boards und Seiten lesen und bearbeiten kann. Richtet ein, wo die Umgebung es erlaubt, und leitet sonst Schritt fuer Schritt an. Nutze bei "verbinde Jira", "Azure DevOps anbinden", "Notion verbinden", "pm-tool-verbinden".
+description: Verbindet den Assistenten mit dem Projektwerkzeug - Azure DevOps, Jira oder Notion - damit er dort Tickets, Boards und Seiten lesen und bearbeiten kann. Azure DevOps wahlweise per MCP oder direkt per REST-Skript (nur lesend, auch fuer eigene Server). Richtet ein, wo die Umgebung es erlaubt, und leitet sonst Schritt fuer Schritt an. Nutze bei "verbinde Jira", "Azure DevOps anbinden", "Notion verbinden", "pm-tool-verbinden".
 ---
 
 # PM-Tool verbinden
@@ -12,8 +12,9 @@ Azure DevOps, Jira oder Notion. Dieser Skill stellt die Verbindung her, damit de
 Assistent dort direkt arbeiten kann: Tickets lesen und anlegen, Boards abfragen,
 Seiten bearbeiten.
 
-Die Verbindung läuft über **MCP** (Model Context Protocol) — ein Standard-Stecker,
-über den ein Assistent fremde Anwendungen bedienen darf.
+Die Verbindung läuft meist über **MCP** (Model Context Protocol) — ein
+Standard-Stecker, über den ein Assistent fremde Anwendungen bedienen darf. Für
+Azure DevOps gibt es zusätzlich einen direkten REST-Weg ohne MCP (Weg B unten).
 
 **Diese Befehle veralten.** Wenn einer fehlschlägt oder eine Adresse nicht mehr
 stimmt: erst die verlinkte offizielle Doku prüfen, dann weitermachen — nicht raten.
@@ -74,20 +75,33 @@ Notion betreibt einen offiziellen Server mit Browser-Login (OAuth). Doku:
 
 ### Azure DevOps
 
-Microsofts offizieller Server: <https://github.com/microsoft/azure-devops-mcp>.
-Er läuft lokal (`npx`) und braucht einen Zugang. **Vor dem Einrichten die README
-prüfen**, welche Anmeldewege der Server aktuell unterstützt — bevorzugt den
-**Personal Access Token (PAT)**, weil er ohne Azure-CLI-Installation auskommt.
+Zwei Wege — zuerst entscheiden, welcher passt:
 
-**PAT anlegen** (macht der Mensch selbst, im Browser):
+| Situation | Weg |
+|---|---|
+| Cloud (`dev.azure.com`), Terminal, Schreiben gewünscht | A — MCP-Server |
+| Eigener Server (Azure DevOps Server, eigene Adresse) | B — direkt per REST |
+| Umgebung ohne MCP-Möglichkeit | B — direkt per REST |
+| Nur lesen gewünscht | B — direkt per REST |
 
-1. `https://dev.azure.com/<organisation>` öffnen
+**PAT anlegen** (macht der Mensch selbst, im Browser — gilt für beide Wege):
+
+1. `https://dev.azure.com/<organisation>` öffnen — beim eigenen Server stattdessen
+   `https://<server>/<collection>`
 2. Oben rechts: Benutzereinstellungen -> **Personal access tokens** -> New Token
-3. Nur die nötigen Rechte: **Work Items (Read & Write)**, bei Bedarf **Code (Read)**
+3. Nur die nötigen Rechte: für Weg B reicht **Read**; für Weg A **Work Items
+   (Read & Write)**, bei Bedarf **Code (Read)**
 4. Ablaufdatum setzen (90 Tage sind ein guter Standard) und das Token kopieren
 
-Dann einrichten — das Token landet dabei **nur in der lokalen Config oder einer
-Umgebungsvariable**, siehe Sicherheitsregeln unten.
+Das Token landet danach **nur in der lokalen Config, einer Umgebungsvariable
+oder der Env-Datei aus Weg B** — siehe Sicherheitsregeln unten.
+
+#### Weg A: MCP-Server
+
+Microsofts offizieller Server: <https://github.com/microsoft/azure-devops-mcp>.
+Er läuft lokal (`npx`) und braucht einen Zugang. **Vor dem Einrichten die README
+prüfen**, welche Anmeldewege der Server aktuell unterstützt — bevorzugt das PAT,
+weil es ohne Azure-CLI-Installation auskommt.
 
 - **Claude Code:** `claude mcp add` mit dem Startbefehl aus der README des Servers,
   das PAT als Umgebungsvariable (`--env NAME=wert`), Organisation als Argument.
@@ -95,8 +109,29 @@ Umgebungsvariable**, siehe Sicherheitsregeln unten.
   das PAT unter `env`.
 - **Cowork / Codex Work:** Für Azure DevOps gibt es keinen eingebauten Connector.
   Prüfen, ob die App lokale MCP-Server per Config-Datei unterstützt, und den
-  Menschen durch genau diese Datei führen. Geht das nicht, ehrlich sagen: Dieser
-  Weg funktioniert derzeit nur im Terminal.
+  Menschen durch genau diese Datei führen. Geht das nicht: Weg B nehmen.
+
+#### Weg B: direkt per REST (ohne MCP)
+
+Ein kleines Shell-Skript ruft die REST-API von Azure DevOps direkt auf — kein
+MCP-Server, nichts zu installieren, funktioniert überall, wo der Assistent
+Shell-Befehle ausführen darf, und als einziger Weg auch mit einem eigenen
+Azure DevOps Server. Bewusst **nur lesend**: Projekte, Teams, Iterationen,
+Work Items samt Details und Kommentaren, Repos, Dateien.
+
+1. Skript kopieren: `references/azdo.sh` (liegt neben diesem Skill) nach
+   `bin/azdo.sh` im Vault, dann `chmod +x bin/azdo.sh`.
+2. Zugangsdaten **außerhalb des Vaults** ablegen, in
+   `~/.config/secondbrain/azure-devops.env`:
+
+       AZDO_COLLECTION_URL=https://dev.azure.com/<organisation>
+       AZDO_PAT=<das Token>
+       AZDO_API_VERSION=6.0
+
+   Beim eigenen Server ist die URL `https://<server>/<collection>`. Die
+   API-Version 6.0 verstehen der Cloud-Dienst und Azure DevOps Server ab 2020;
+   schlägt ein Aufruf fehl, die Version prüfen, die der Server spricht.
+3. `bin/azdo.sh` ohne Argumente zeigt alle Unterbefehle.
 
 ## Sicherheitsregeln (nicht verhandelbar)
 
@@ -116,7 +151,9 @@ laden beim Start):
 
 - **Jira:** ein bekanntes Ticket abrufen oder die eigenen offenen Vorgänge listen
 - **Notion:** eine Seite suchen, deren Titel der Mensch nennt
-- **Azure DevOps:** die Work Items des aktuellen Sprints listen
+- **Azure DevOps (Weg A):** die Work Items des aktuellen Sprints listen
+- **Azure DevOps (Weg B):** `bin/azdo.sh projects` — kommt die Projektliste
+  zurück, steht die Verbindung
 
 Kommt echtes Ergebnis zurück: Verbindung steht. Kommt ein Fehler: Fehlermeldung
 lesen und beheben, nicht "sollte jetzt gehen" melden.
