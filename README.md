@@ -47,6 +47,13 @@ Codex kennt keine Marktplätze, es liest Skill-Ordner. Wer die Second-Brain-Vorl
 nutzt: Im Vault liegt `bin/skills-update.sh` — das Skript holt die Skills aus diesem
 Repo und legt sie in die Ordner, die Codex (und Claude im Terminal) lesen.
 
+### OpenCode
+
+Nichts zu installieren: [OpenCode](https://opencode.ai) liest die Skills unter
+`.claude/skills/` eines Vaults direkt mit (nachgemessen) — `bin/skills-update.sh`
+hält also auch OpenCode aktuell. Global lassen sie sich alternativ nach
+`~/.config/opencode/skills/` kopieren.
+
 ## Updates
 
 - **Claude Code / Cowork:** über die Plugin-Verwaltung aktualisieren

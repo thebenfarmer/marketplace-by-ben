@@ -27,6 +27,7 @@ prüfen, dann weitermachen — nicht raten.
 |---|---|
 | Claude Code (Terminal) | Ja — per `claude mcp add` |
 | Codex (Terminal) | Ja — per `~/.codex/config.toml` |
+| OpenCode (Terminal) | Ja — per `opencode.json`, Abschnitt `mcp` (Doku: <https://opencode.ai/docs/mcp-servers/>) |
 | Claude Cowork (Desktop App) | Nein — anleiten: Connector-Einstellungen im Claude-Konto |
 | Codex Work (Desktop App) | Teilweise — prüfen, ob die App `~/.codex/config.toml` liest; sonst anleiten |
 
