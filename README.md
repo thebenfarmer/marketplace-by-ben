@@ -43,9 +43,25 @@ starten — Skills laden beim Start.
 
 ### ChatGPT / Codex
 
-Codex kennt keine Marktplätze, es liest Skill-Ordner. Wer die Second-Brain-Vorlage
-nutzt: Im Vault liegt `bin/skills-update.sh` — das Skript holt die Skills aus diesem
-Repo und legt sie in die Ordner, die Codex (und Claude im Terminal) lesen.
+Dieses Repo ist auch ein Codex-Marktplatz (Katalog in `.agents/plugins/`, je Plugin
+ein `.codex-plugin/plugin.json` neben dem Claude-Manifest — die Skills sind dieselben
+Dateien).
+
+- **Codex Work / ChatGPT-App:** Plugins-Ansicht -> Marktplatz hinzufügen, als Quelle
+  `https://github.com/thebenfarmer/marketplace-by-ben.git`, Git-Ref `main`,
+  Sparse-Pfade leer lassen. Danach die App neu starten und das Plugin installieren.
+- **Codex CLI:**
+
+  ```bash
+  codex plugin marketplace add https://github.com/thebenfarmer/marketplace-by-ben.git
+  codex plugin add second-brain@marketplace-by-ben
+  ```
+
+  Nachgemessen mit codex-cli 0.149.0: Nach der Installation stehen die Skills in
+  jeder neuen Session bereit. Updates: `codex plugin marketplace upgrade`.
+- **Ohne Marktplatz** (ältere Codex-Versionen, Vault-Ordner): Im Vault der
+  Second-Brain-Vorlage liegt `bin/skills-update.sh` — das Skript holt die Skills aus
+  diesem Repo und legt sie in die Ordner, die Codex und Claude im Terminal lesen.
 
 ### OpenCode
 

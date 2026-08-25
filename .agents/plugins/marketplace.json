@@ -1,0 +1,30 @@
+{
+  "name": "marketplace-by-ben",
+  "interface": {
+    "displayName": "Marketplace by Ben"
+  },
+  "plugins": [
+    {
+      "name": "second-brain",
+      "source": {
+        "source": "local",
+        "path": "./plugins/second-brain"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "pen",
+      "source": {
+        "source": "local",
+        "path": "./plugins/pen"
+      },
+      "policy": {
+        "installation": "AVAILABLE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

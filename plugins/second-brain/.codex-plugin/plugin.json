@@ -1,0 +1,17 @@
+{
+  "name": "second-brain",
+  "version": "1.2.0",
+  "description": "Skills fuer einen PARA-Vault aus der Second-Brain-Vorlage: Onboarding, Feierabend, Frag-mich-aus, PM-Tool-Anbindung",
+  "author": {
+    "name": "Ben Dressler"
+  },
+  "repository": "https://github.com/thebenfarmer/marketplace-by-ben",
+  "keywords": ["second-brain", "vault", "para", "obsidian"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Zweites Gehirn",
+    "shortDescription": "Onboarding, Feierabend, Frag-mich-aus und PM-Tool-Anbindung fuer einen PARA-Vault",
+    "developerName": "Ben Dressler",
+    "category": "Productivity"
+  }
+}

@@ -64,6 +64,31 @@ for plugin in daten.get("plugins", []):
         if not re.search(r"^description:\s*\S", m.group(1), re.MULTILINE):
             melde(f"{skill_md}: Frontmatter ohne description")
 
+codex_marktplatz = ROOT / ".agents" / "plugins" / "marketplace.json"
+try:
+    codex_daten = json.loads(codex_marktplatz.read_text())
+except (OSError, json.JSONDecodeError) as e:
+    melde(f"{codex_marktplatz}: {e}")
+    codex_daten = {"plugins": []}
+
+claude_namen = {p["name"] for p in daten.get("plugins", [])}
+codex_namen = set()
+for plugin in codex_daten.get("plugins", []):
+    codex_namen.add(plugin["name"])
+    plugin_dir = ROOT / plugin["source"]["path"]
+    if not plugin_dir.is_dir():
+        melde(f"Codex-Plugin {plugin['name']}: Pfad {plugin['source']['path']} existiert nicht")
+        continue
+    manifest = plugin_dir / ".codex-plugin" / "plugin.json"
+    try:
+        meta = json.loads(manifest.read_text())
+        if meta.get("name") != plugin["name"]:
+            melde(f"{manifest}: name '{meta.get('name')}' != Katalog-Name '{plugin['name']}'")
+    except (OSError, json.JSONDecodeError) as e:
+        melde(f"{manifest}: {e}")
+if claude_namen != codex_namen:
+    melde(f"Claude-Katalog {sorted(claude_namen)} != Codex-Katalog {sorted(codex_namen)}")
+
 if befunde:
     print(f"\n{len(befunde)} Befund(e).")
     sys.exit(1)
