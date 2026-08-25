@@ -1,6 +1,6 @@
 ---
 name: pm-tool-verbinden
-description: Verbindet den Assistenten mit dem Projektwerkzeug des Users - Azure DevOps, Jira oder Notion - damit er dort Tickets, Boards und Seiten lesen und bearbeiten kann. Richtet ein, wo die Umgebung es erlaubt, und leitet sonst Schritt fuer Schritt an. Nutze bei "verbinde Jira", "Azure DevOps anbinden", "Notion verbinden", "pm-tool-verbinden".
+description: Verbindet den Assistenten mit dem Projektwerkzeug - Azure DevOps, Jira oder Notion - damit er dort Tickets, Boards und Seiten lesen und bearbeiten kann. Richtet ein, wo die Umgebung es erlaubt, und leitet sonst Schritt fuer Schritt an. Nutze bei "verbinde Jira", "Azure DevOps anbinden", "Notion verbinden", "pm-tool-verbinden".
 ---
 
 # PM-Tool verbinden
@@ -15,9 +15,8 @@ Seiten bearbeiten.
 Die Verbindung läuft über **MCP** (Model Context Protocol) — ein Standard-Stecker,
 über den ein Assistent fremde Anwendungen bedienen darf.
 
-**Stand der Befehle: August 2026.** Diese Werkzeuge ändern sich. Wenn ein Befehl
-fehlschlägt oder eine Adresse nicht mehr stimmt: erst die verlinkte offizielle Doku
-prüfen, dann weitermachen — nicht raten.
+**Diese Befehle veralten.** Wenn einer fehlschlägt oder eine Adresse nicht mehr
+stimmt: erst die verlinkte offizielle Doku prüfen, dann weitermachen — nicht raten.
 
 ## Schritt 1: Lage prüfen
 

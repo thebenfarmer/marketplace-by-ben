@@ -12,8 +12,8 @@ und bearbeiten: UI-Mockups, Landing Pages, Grafiken. Das Ergebnis ist eine
 `.pen`-Datei, die der Mensch auf <https://pen.dev> oder in der Pen-Desktop-App
 öffnet und weiterbearbeitet.
 
-**Stand der Befehle: August 2026.** Schlägt ein Befehl fehl: erst `pen --help`
-lesen, dann die Doku auf <https://pen.dev> — nicht raten.
+**Diese Befehle veralten.** Schlägt einer fehl: erst `pen --help` lesen, dann die
+Doku auf <https://pen.dev> — nicht raten.
 
 ## Schritt 1: Lage prüfen — die Pen-App entscheidet
 
