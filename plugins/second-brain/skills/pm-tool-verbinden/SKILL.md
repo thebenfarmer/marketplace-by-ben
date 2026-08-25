@@ -124,8 +124,10 @@ lesen und beheben, nicht "sollte jetzt gehen" melden.
 
 ## Schritt 4: festhalten
 
-In `kontext/arbeitsumfeld.md` eine Zeile ergänzen: welches Werkzeug verbunden ist
-und seit wann. **Kein Token, keine Adresse mit Zugangsdaten** — nur die Tatsache.
+Eine Zeile ergänzen: welches Werkzeug verbunden ist und seit wann. Wohin, hängt am
+Zuschnitt des Vaults: in `kontext/arbeitsumfeld.md`, wenn es die Seite gibt
+(Zuschnitt Bereiche), sonst in `kontext/ueber-mich.md` (Zuschnitt Ventures).
+**Kein Token, keine Adresse mit Zugangsdaten** — nur die Tatsache.
 
 ## Der Abschluss
 
