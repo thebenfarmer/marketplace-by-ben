@@ -99,14 +99,44 @@ oder der Env-Datei aus Weg B** — siehe Sicherheitsregeln unten.
 #### Weg A: MCP-Server
 
 Microsofts offizieller Server: <https://github.com/microsoft/azure-devops-mcp>.
-Er läuft lokal (`npx`) und braucht einen Zugang. **Vor dem Einrichten die README
-prüfen**, welche Anmeldewege der Server aktuell unterstützt — bevorzugt das PAT,
-weil es ohne Azure-CLI-Installation auskommt.
+Er läuft lokal (`npx`) und meldet sich standardmäßig **interaktiv per
+Browser-Login** (Microsoft-Konto) an — dafür reicht die Organisation als
+Argument, kein PAT nötig. Vollständige Anleitung mit allen Anmeldewegen:
+<https://github.com/microsoft/azure-devops-mcp/blob/main/docs/GETTINGSTARTED.md>
+**Vor dem Einrichten dort nachsehen**, ob sich Befehle geändert haben.
 
-- **Claude Code:** `claude mcp add` mit dem Startbefehl aus der README des Servers,
-  das PAT als Umgebungsvariable (`--env NAME=wert`), Organisation als Argument.
-- **Codex:** Eintrag in `~/.codex/config.toml` mit `command`/`args` aus der README,
-  das PAT unter `env`.
+- **Claude Code, interaktiv (einfachster Weg):**
+
+      claude mcp add --transport stdio azure-devops -- npx -y @azure-devops/mcp <organisation>
+
+  Danach `claude mcp list` zur Kontrolle. Beim ersten Tool-Aufruf öffnet sich
+  der Browser für den Login.
+
+- **Claude Code mit PAT** (wenn kein Browser verfügbar ist, z.B. headless):
+  Drei Stolperfallen, die genau hier die Verbindung kaputt machen, wenn man sie
+  übergeht — der Variablenname ist **fest** `PERSONAL_ACCESS_TOKEN` (kein
+  beliebiger Name), der Wert muss **base64-kodiert als `<email>:<pat>`**
+  übergeben werden (nicht das rohe Token), und ohne das zusätzliche
+  `--authentication pat`-Argument ignoriert der Server das Token und versucht
+  trotzdem den Browser-Login:
+
+      claude mcp add --transport stdio azure-devops \
+        --env PERSONAL_ACCESS_TOKEN="$(printf '%s' '<email>:<pat>' | base64)" \
+        -- npx -y @azure-devops/mcp <organisation> --authentication pat
+
+  Die E-Mail-Adresse kann ein beliebiger nicht-leerer Wert sein, sie wird nicht
+  geprüft.
+
+- **Nur die gebrauchten Tool-Gruppen laden** hält die Tool-Liste klein — z.B.
+  für "Repos lesen, Arbeitselemente anlegen" reicht
+  `-d repositories -d work-items` als zusätzliches Server-Argument (verfügbare
+  Domains: `core`, `work`, `work-items`, `search`, `test-plans`, `repositories`,
+  `wiki`, `pipelines`, `advanced-security`).
+
+- **Codex:** `codex mcp add azure-devops -- npx -y @azure-devops/mcp <organisation>`
+  (interaktiv) oder mit `az login` + `--authentication azcli`. Manueller
+  Eintrag in `~/.codex/config.toml` unter `[mcp_servers.azure-devops]` mit
+  `command`/`args` wie oben.
 - **Cowork / Codex Work:** Für Azure DevOps gibt es keinen eingebauten Connector.
   Prüfen, ob die App lokale MCP-Server per Config-Datei unterstützt, und den
   Menschen durch genau diese Datei führen. Geht das nicht: Weg B nehmen.
