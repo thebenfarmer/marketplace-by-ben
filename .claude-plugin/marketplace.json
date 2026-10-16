@@ -1,6 +1,6 @@
 {
   "name": "marketplace-by-ben",
-  "description": "Bens Plugin-Marktplatz. Das Second-Brain-Plugin (Onboarding, Feierabend, Frag-mich-aus) fuer einen PARA-Vault und claude-obsidian von AgriciDaniel fuer eine Obsidian-Wissensbasis.",
+  "description": "Bens Plugin-Marktplatz. Aktuell: das Second-Brain-Plugin (Onboarding, Feierabend, Frag-mich-aus) fuer einen PARA-Vault.",
   "owner": {
     "name": "Ben Dressler"
   },
@@ -9,15 +9,6 @@
       "name": "second-brain",
       "source": "./plugins/second-brain",
       "description": "Skills fuer einen PARA-Vault aus der Second-Brain-Vorlage: Onboarding, Feierabend, Frag-mich-aus"
-    },
-    {
-      "name": "obsidian-wiki",
-      "source": {
-        "source": "github",
-        "repo": "AgriciDaniel/claude-obsidian",
-        "sha": "32ac5a02c4e082e4a5628ca810776375e134708e"
-      },
-      "description": "Fremdes Plugin (MIT, AgriciDaniel, Version 2.2.0): Obsidian-Wissensbasis mit Quellenbelegen - Quellen einlesen, Notizen abfragen, Vault pruefen"
     }
   ]
 }
