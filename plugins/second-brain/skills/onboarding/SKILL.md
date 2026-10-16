@@ -24,7 +24,7 @@ Der Vault kommt in zwei Zuschnitten. Sieh nach, statt zu fragen:
 | Prüfung | Zuschnitt | Was das heißt |
 |---|---|---|
 | `_templates/venture.md` existiert | **Ventures** | Für Selbstständige. Einkommensquellen liegen unter `bereiche/ventures/<name>/`, Bezugsfeld heißt `venture`, Übersichtsnotiz aus `venture.md` |
-| Datei fehlt | **Bereiche** | Für Angestellte. Themen liegen unter `bereiche/<name>/`, Bezugsfeld heißt `bereich`, Übersichtsnotiz aus `bereich.md` |
+| Datei fehlt | **Bereiche** | Für Menschen, die für sich selbst ein zweites Gehirn aufbauen. Themen liegen unter `bereiche/<name>/`, Bezugsfeld heißt `bereich`, Übersichtsnotiz aus `bereich.md` |
 
 Was dabei herauskommt, heißt unten **der Bezug**. Danach richten sich die Fragen ab
 Nummer 5 und der Ordner, in dem der erste Bezug entsteht.
@@ -203,7 +203,7 @@ Keine Zusammenfassung des Gesprächs — er war dabei.
 | Antworten in eigene Worte übersetzen | Die Seite soll klingen wie der Mensch. Sonst trifft der Ton später nie. |
 | Lücken mit Plausiblem füllen | Eine erfundene Zeile in `kontext/` wirkt in jedem künftigen Gespräch weiter, ohne dass jemand sie prüft. |
 | "Noch offen: ..." schreiben, ohne die Lücke zu benennen | Die Zeile erinnert an nichts und wird nie nachgeliefert. Im Test genau so passiert. Immer hinschreiben, WAS fehlt. |
-| Angestellte nach Quartals- oder Strategiezielen fragen | Bewusst gestrichen: Die meisten haben keine und fühlen sich von der Frage geprüft. Gefragt wird nach dem Alltag. |
+| Im Zuschnitt Bereiche nach Quartals- oder Strategiezielen fragen | Bewusst gestrichen: Die meisten haben keine und fühlen sich von der Frage geprüft. Gefragt wird nach dem Alltag. |
 | Ein Projekt ohne genannten Termin anlegen | Eine erfundene Deadline ist schlimmer als keine — sie meldet sich irgendwann als falscher Alarm. |
 | Drei Bereiche auf Vorrat anlegen | Leere Ordner sind Ballast und erziehen dazu, den Vault zu ignorieren. |
 | Beispielnotizen zur Anschauung anlegen | Der Vault wird bewusst leer ausgeliefert. Fremde Inhalte sehen aus wie Arbeit, die man erst wegräumen muss. Zum Zeigen die Vorlagen in `_templates/` öffnen. |

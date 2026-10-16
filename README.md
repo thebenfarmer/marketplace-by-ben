@@ -9,7 +9,6 @@ GitHub-Konto funktionieren.
 | Plugin | Skills | Wofür |
 |---|---|---|
 | `second-brain` | `onboarding`, `feierabend`, `fragmichaus` | Skills für einen PARA-Vault aus der [Second-Brain-Vorlage](https://github.com/thebenfarmer/second-brain-vorlage) |
-| `obsidian-wiki` | 15 Skills, u. a. `wiki-ingest`, `wiki-query`, `wiki-lint`, `save` | Fremdes Plugin [claude-obsidian](https://github.com/AgriciDaniel/claude-obsidian) von AgriciDaniel (MIT): Obsidian-Wissensbasis mit Quellenbelegen. Liegt hier nicht als Kopie, sondern als Verweis auf Version 2.2.0 |
 
 Die Skills im Überblick:
 
@@ -28,15 +27,6 @@ claude plugin install second-brain@marketplace-by-ben
 ```
 
 Oder in einer laufenden Sitzung `/plugin` tippen und den Marktplatz dort eintragen.
-
-`obsidian-wiki` ist ein fremdes Plugin und nur für Claude gebaut (kein Codex-Eintrag).
-Es startet bei jeder Sitzung und beim Beenden ein Python-Skript (`hooks/hooks.json`).
-Der Marktplatz zeigt auf eine feste Revision (Version 2.2.0), nicht auf den neuesten Stand;
-ein Update ist eine bewusste Änderung hier.
-
-```bash
-claude plugin install obsidian-wiki@marketplace-by-ben
-```
 
 ### Claude Cowork (Desktop App)
 

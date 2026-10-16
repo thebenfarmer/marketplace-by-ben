@@ -10,7 +10,7 @@ selbst — dort schadet das Plugin aber auch nicht und bringt die Updates.
 
 | Skill | Was er tut |
 |---|---|
-| `onboarding` | Interview (8 Fragen für Angestellte, 9 für Selbstständige) mit festen Beispielantworten, füllt daraus `kontext/`, legt den ersten Bereich und bei genanntem Termin das erste Projekt an |
+| `onboarding` | Interview (8 Fragen im Zuschnitt Bereiche, 9 im Zuschnitt Ventures) mit festen Beispielantworten, füllt daraus `kontext/`, legt den ersten Bereich und bei genanntem Termin das erste Projekt an |
 | `feierabend` | Inbox einsortieren, Tagesnotiz schreiben, Erkenntnisse ablegen, Prüflauf |
 | `fragmichaus` | Löchert dich zu einem Plan oder einer Entscheidung, bis das Denken stressgetestet ist |
 
