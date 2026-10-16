@@ -85,8 +85,6 @@ Die weiteren Fragen hängen am Zuschnitt.
    > Etwa so: "Wir sind fünf. Produktfragen entscheidet Anna, Budget mein Chef, den
    > Rest kläre ich selbst."
 6. **Womit arbeitet ihr — Projektwerkzeug, Chat, Ablage?**
-   (Wird hier Azure DevOps, Jira oder Notion genannt: merken — der Abschluss greift
-   es auf.)
    > Etwa so: "Jira für Aufgaben, Teams für den Chat, SharePoint als Ablage."
 7. **Woran arbeitest du gerade konkret — und was davon hat einen Termin?**
    (Bewusst keine Frage nach Strategie oder Quartalszielen — es zählt der Alltag, bei
@@ -193,18 +191,6 @@ Kurz und konkret, höchstens acht Zeilen:
   erzählen und "merk dir das" sagen. Dazu die zwei Sätze, die dabei zählen: das "warum"
   ist wertvoller als das "was", und ohne Hypothese, Messgröße und Zeitraum ist etwas
   eine Idee und kein Experiment.
-
-Dann genau **eine** Frage — die nach dem Projektwerkzeug, und sie greift auf, was im
-Gespräch fiel:
-
-- **Wurde Azure DevOps, Jira oder Notion genannt** (meist bei der Werkzeug-Frage):
-  darauf beziehen — "Du hast Jira erwähnt. Soll ich mich damit verbinden, damit ich
-  dort für dich arbeiten kann?"
-- **Wurde keines genannt:** generisch fragen — "Arbeitest du mit Azure DevOps, Jira
-  oder Notion — und soll ich mich damit verbinden?"
-
-Bei Ja den Skill `pm-tool-verbinden` starten. Bei Nein oder Unsicherheit: erwähnen,
-dass das jederzeit mit "verbinde mein PM-Tool" nachholbar ist, und aufhören.
 
 Keine Zusammenfassung des Gesprächs — er war dabei.
 
