@@ -1,6 +1,6 @@
 {
   "name": "marketplace-by-ben",
-  "description": "Bens Plugin-Marktplatz. Aktuell: das Second-Brain-Plugin (Onboarding, Feierabend, Frag-mich-aus, PM-Tool-Anbindung) fuer einen PARA-Vault.",
+  "description": "Bens Plugin-Marktplatz. Aktuell: das Second-Brain-Plugin (Onboarding, Feierabend, Frag-mich-aus) fuer einen PARA-Vault.",
   "owner": {
     "name": "Ben Dressler"
   },
@@ -8,12 +8,7 @@
     {
       "name": "second-brain",
       "source": "./plugins/second-brain",
-      "description": "Skills fuer einen PARA-Vault aus der Second-Brain-Vorlage: Onboarding, Feierabend, Frag-mich-aus, PM-Tool-Anbindung"
-    },
-    {
-      "name": "pen",
-      "source": "./plugins/pen",
-      "description": "Designs mit der pen.dev-CLI erzeugen und bearbeiten - bietet sich nur an, wo die Pen-App installiert ist, und installiert die CLI bei Bedarf nach"
+      "description": "Skills fuer einen PARA-Vault aus der Second-Brain-Vorlage: Onboarding, Feierabend, Frag-mich-aus"
     }
   ]
 }

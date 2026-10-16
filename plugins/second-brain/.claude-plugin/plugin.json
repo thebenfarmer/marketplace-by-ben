@@ -1,8 +1,8 @@
 {
   "name": "second-brain",
   "displayName": "Zweites Gehirn",
-  "description": "Skills fuer einen PARA-Vault aus der Second-Brain-Vorlage: Onboarding, Feierabend, Frag-mich-aus, PM-Tool-Anbindung",
-  "version": "1.3.0",
+  "description": "Skills fuer einen PARA-Vault aus der Second-Brain-Vorlage: Onboarding, Feierabend, Frag-mich-aus",
+  "version": "1.4.0",
   "author": {
     "name": "Ben Dressler"
   },

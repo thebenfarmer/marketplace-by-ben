@@ -8,45 +8,14 @@ GitHub-Konto funktionieren.
 
 | Plugin | Skills | Wofür |
 |---|---|---|
-| `second-brain` | `onboarding`, `feierabend`, `fragmichaus`, `pm-tool-verbinden` | Skills für einen PARA-Vault aus der [Second-Brain-Vorlage](https://github.com/thebenfarmer/second-brain-vorlage) |
-| `pen` | `pen` | Designs mit der [pen.dev](https://pen.dev)-CLI erzeugen und bearbeiten — bietet sich nur an, wo die Pen-App installiert ist (CLI wird bei Bedarf nachinstalliert) |
+| `second-brain` | `onboarding`, `feierabend`, `fragmichaus` | Skills für einen PARA-Vault aus der [Second-Brain-Vorlage](https://github.com/thebenfarmer/second-brain-vorlage) |
 
 Die Skills im Überblick:
 
-- **`onboarding`** — richtet einen frischen Vault per Interview ein und fragt am Ende,
-  ob ein Projektwerkzeug angebunden werden soll
+- **`onboarding`** — richtet einen frischen Vault per Interview ein
 - **`feierabend`** — schließt eine Session ab: Inbox, Tagesnotiz, Prüflauf
 - **`fragmichaus`** — löchert dich zu einem Plan oder einer Entscheidung, Frage für
   Frage, bis das Denken stressgetestet ist
-- **`pm-tool-verbinden`** — verbindet den Assistenten mit Azure DevOps, Jira oder
-  Notion, damit er dort Tickets und Seiten bearbeiten kann
-- **`pen`** — erzeugt und ändert `.pen`-Design-Dateien per Prompt über die
-  pen.dev-CLI (eigener pen.dev-Account nötig; ohne installierte Pen-App hält der Skill still,
-  eine fehlende CLI installiert er selbst nach)
-
-## Installieren
-
-### Claude Code (Terminal)
-
-```bash
-claude plugin marketplace add thebenfarmer/marketplace-by-ben
-claude plugin install second-brain@marketplace-by-ben
-```
-
-Oder in einer laufenden Sitzung `/plugin` tippen und den Marktplatz dort eintragen.
-
-### Claude Cowork (Desktop App)
-
-**Customize -> Plugins -> Add marketplace**, dann `thebenfarmer/marketplace-by-ben`
-eintragen und das Plugin `second-brain` installieren. Danach eine **neue** Sitzung
-starten — Skills laden beim Start.
-
-### ChatGPT / Codex
-
-Dieses Repo ist auch ein Codex-Marktplatz (Katalog in `.agents/plugins/`, je Plugin
-ein `.codex-plugin/plugin.json` neben dem Claude-Manifest — die Skills sind dieselben
-Dateien).
-
 - **Codex Work / ChatGPT-App:** Plugins-Ansicht -> Marktplatz hinzufügen, als Quelle
   `https://github.com/thebenfarmer/marketplace-by-ben.git`, Git-Ref `main`,
   Sparse-Pfade leer lassen. Danach die App neu starten und das Plugin installieren.
