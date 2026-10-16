@@ -2,6 +2,7 @@
 """Prueft die Grundform des Marktplatzes, ohne Claude-CLI:
 
 - marketplace.json und plugin.json sind gueltiges JSON und zeigen auf existierende Pfade
+  (externe Plugins muessen auf eine feste Revision zeigen und stehen nicht im Codex-Katalog)
 - jeder Skill-Ordner enthaelt eine SKILL.md mit Frontmatter
 - der name im Frontmatter ist gleich dem Ordnernamen
 
@@ -29,6 +30,11 @@ except (OSError, json.JSONDecodeError) as e:
     sys.exit(1)
 
 for plugin in daten.get("plugins", []):
+    if isinstance(plugin["source"], dict):
+        # Fremdes Plugin aus einem anderen Repo: nur pruefen, dass es auf einen festen Stand zeigt.
+        if not plugin["source"].get("repo") or not re.fullmatch(r"[0-9a-f]{40}", plugin["source"].get("sha", "")):
+            melde(f"{plugin['name']}: externe Quelle braucht repo und eine 40-stellige sha")
+        continue
     plugin_dir = ROOT / plugin["source"]
     if not plugin_dir.is_dir():
         melde(f"{plugin['name']}: Quelle {plugin['source']} existiert nicht")
@@ -71,7 +77,7 @@ except (OSError, json.JSONDecodeError) as e:
     melde(f"{codex_marktplatz}: {e}")
     codex_daten = {"plugins": []}
 
-claude_namen = {p["name"] for p in daten.get("plugins", [])}
+claude_namen = {p["name"] for p in daten.get("plugins", []) if not isinstance(p["source"], dict)}
 codex_namen = set()
 for plugin in codex_daten.get("plugins", []):
     codex_namen.add(plugin["name"])

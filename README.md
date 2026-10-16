@@ -9,6 +9,7 @@ GitHub-Konto funktionieren.
 | Plugin | Skills | Wofür |
 |---|---|---|
 | `second-brain` | `onboarding`, `feierabend`, `fragmichaus` | Skills für einen PARA-Vault aus der [Second-Brain-Vorlage](https://github.com/thebenfarmer/second-brain-vorlage) |
+| `obsidian-wiki` | 15 Skills, u. a. `wiki-ingest`, `wiki-query`, `wiki-lint`, `save` | Fremdes Plugin [claude-obsidian](https://github.com/AgriciDaniel/claude-obsidian) von AgriciDaniel (MIT): Obsidian-Wissensbasis mit Quellenbelegen. Liegt hier nicht als Kopie, sondern als Verweis auf Version 2.2.0 |
 
 Die Skills im Überblick:
 
@@ -16,6 +17,39 @@ Die Skills im Überblick:
 - **`feierabend`** — schließt eine Session ab: Inbox, Tagesnotiz, Prüflauf
 - **`fragmichaus`** — löchert dich zu einem Plan oder einer Entscheidung, Frage für
   Frage, bis das Denken stressgetestet ist
+
+## Installieren
+
+### Claude Code (Terminal)
+
+```bash
+claude plugin marketplace add thebenfarmer/marketplace-by-ben
+claude plugin install second-brain@marketplace-by-ben
+```
+
+Oder in einer laufenden Sitzung `/plugin` tippen und den Marktplatz dort eintragen.
+
+`obsidian-wiki` ist ein fremdes Plugin und nur für Claude gebaut (kein Codex-Eintrag).
+Es startet bei jeder Sitzung und beim Beenden ein Python-Skript (`hooks/hooks.json`).
+Der Marktplatz zeigt auf eine feste Revision (Version 2.2.0), nicht auf den neuesten Stand;
+ein Update ist eine bewusste Änderung hier.
+
+```bash
+claude plugin install obsidian-wiki@marketplace-by-ben
+```
+
+### Claude Cowork (Desktop App)
+
+**Customize -> Plugins -> Add marketplace**, dann `thebenfarmer/marketplace-by-ben`
+eintragen und das Plugin `second-brain` installieren. Danach eine **neue** Sitzung
+starten — Skills laden beim Start.
+
+### ChatGPT / Codex
+
+Dieses Repo ist auch ein Codex-Marktplatz (Katalog in `.agents/plugins/`, je Plugin
+ein `.codex-plugin/plugin.json` neben dem Claude-Manifest — die Skills sind dieselben
+Dateien).
+
 - **Codex Work / ChatGPT-App:** Plugins-Ansicht -> Marktplatz hinzufügen, als Quelle
   `https://github.com/thebenfarmer/marketplace-by-ben.git`, Git-Ref `main`,
   Sparse-Pfade leer lassen. Danach die App neu starten und das Plugin installieren.
